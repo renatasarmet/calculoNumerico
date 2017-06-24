@@ -5,8 +5,8 @@ df <- function(x) { 5*x^4 - (10*x^2)/3};
 ddf <- function(x) { 20*x - 20*x/3 };
 
 #Teste ruim
-a <-0.8;
-b <- 0.9;
+a <-0.852;
+b <- 0.853;
 x0 <- 0.8;
 x1 <- 1;
 tol <- 10^-16;
