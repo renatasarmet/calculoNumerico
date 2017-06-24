@@ -1,7 +1,9 @@
 bissecao_convergencia <- function(f,a,b){
   if(f(a)*f(b)<0){
+    cat("Converge \n");
     return (1);
   }else{
+    cat("Nao converge \n");
     return (0);
   }
 }
@@ -18,12 +20,12 @@ bissecao <- function(f,a,b,tol1,tol2,tol3,data){
       }else{
         a = x;
       }
-      cat("K = ", k, "\n");
-      cat("x =", x, "\n");
+      #cat("K = ", k, "\n");
+      #cat("x =", x, "\n");
       rtol1 <- abs(b-a);
       rtol2 <- abs(f(x));
       rtol3 <- abs((x-old_x)/abs(x));
-      cat("Tol2 = ", rtol2, "\n");
+      #cat("Tol2 = ", rtol2, "\n");
       data<-rbind(data,c(x,rtol1,rtol2,rtol3));
       old_x <- x;
       k <- k + 1;
@@ -53,8 +55,8 @@ newton <- function(f, df, ddf, x, tol1, tol2, tol3,data){
     k <- 0;
     #No while alterar entre 'e' e 'ou' dependendo do problema
     while((rtol1>tol1)&&(rtol2>tol2)&&(rtol3>tol3)){ 
-      cat("K = ", k , "\n");
-      cat("x = ", x, "\n");
+      #cat("K = ", k , "\n");
+      #cat("x = ", x, "\n");
       old_x <- x;
       
       if(df(old_x)==0){
@@ -75,7 +77,7 @@ newton <- function(f, df, ddf, x, tol1, tol2, tol3,data){
       data<-rbind(data,c(x,rtol1,rtol2,rtol3));
       k <- k + 1;
     }
-    cat("Fim K = ", k , "\n");
+    #cat("Fim K = ", k , "\n");
   }
   return (data);
 }
@@ -88,7 +90,7 @@ secante<-function(f,x0,x1,tol1,tol2,tol3,data){
         rtol3<-abs((x2 - x1)/x2);
         data<-rbind(data,c(x2,rtol1,rtol2,rtol3));
         if((rtol1<tol1)&&(rtol2<tol2)&&(rtol3<tol3)){
-            cat(x2)
+            #cat(x2)
             break
         }else{
             x0<-x1;
