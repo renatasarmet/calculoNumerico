@@ -9,7 +9,7 @@ bissecao_convergencia <- function(f,a,b){
 
 bissecao <- function(f,a,b,tol1,tol2,tol3,data){
   if(bissecao_convergencia(f,a,b)==1){
-    old_x <- a+b; #confirmar se o maximo do tipo 3 é 1
+    old_x <- a+b; 
     k <- 0;
     repeat{
       x <- (a+b)/2;
@@ -81,7 +81,6 @@ newton <- function(f, df, ddf, x, tol1, tol2, tol3,data){
 }
 
 secante<-function(f,x0,x1,tol1,tol2,tol3,data){
-
     repeat{
         x2<-( x0 * f(x1) - x1 * f(x0) ) / ( f(x1) - f(x0) );
         rtol1<-abs(x2 - x1);
@@ -96,6 +95,7 @@ secante<-function(f,x0,x1,tol1,tol2,tol3,data){
             x1<-x2;
         }
     }
+
     return(data)
 }
 
@@ -135,7 +135,7 @@ automatiza<-function(f,df,ddf,a,b,x0,x1,tol1B,tol2B,tol3B,tol1N,tol2N,tol3N,tol1
         data2<-matrix(c("","Metodo","secante",""),1,4)
         data2<-rbind(data2,matrix(c("X","Tolerancia 1","Tolerancia 2","Tolerancia 3"),1,4));
         timeSecante<-proc.time();
-        data2<-newton(f, df, ddf, x0 ,tol1N, tol2N, tol3N,data2);
+        data2<-secante(f, x0, x1 ,tol1S, tol2S, tol3S,data2);
         timeSecante<- proc.time() - timeSecante;
         data2<-rbind(data2,matrix(c("","","",""),1,4));
         n<-nrow(data2);
@@ -180,4 +180,3 @@ print("");
 print("Metodo de automatização:");
 print("automatiza(funcao, primeira derivada,segunda derivada, valor de a, valor de b, primeiro chute, segundo chute, 1 tolerancia bissecao, 2 tolerancia bissecao, 3 tolerancia bissecao, 1 tolerancia Newton, 2 tolerancia Newton, 3 tolerancia Newton,1 tolerancia Secante, 2 tolerancia Secante, 3 tolerancia Secante)");
 print("");
-

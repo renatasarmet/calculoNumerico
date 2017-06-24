@@ -1,11 +1,14 @@
-funcao1 <- function(x) { x^5 - (10*x^3)/9 + 5/21 };
-df1 <- function(x) { 5*x^4 - (10*x^2)/3};
-ddf1 <- function(x) { 20*x - 20*x/3 };
+source("automatizacaoZeroFuncao.R");
 
-print("xNewton: chute inicial pra newton\nxBissecao[0]: inferior\nxBissecao[1]: superior\nxSecante[0]: inferior\nxSecante[1]: superior");
+f <- function(x) { x^5 - (10*x^3)/9 + 5/21 };
+df <- function(x) { 5*x^4 - (10*x^2)/3};
+ddf <- function(x) { 20*x - 20*x/3 };
 
-xNewton <- -0.8;
-xBisseccao[0] <- -0.75;
-xBisseccao[1] <- -0.25;
-xSecante[0] <- 0.8;
-xSecante[1] <- 1;
+#Teste ruim
+a <-0.8;
+b <- 0.9;
+x0 <- 0.8;
+x1 <- 1;
+tol <- 10^-16;
+
+automatiza(f,df,ddf,a,b,x0,x1,tol,tol,tol,tol,tol,tol,tol,tol,tol);
