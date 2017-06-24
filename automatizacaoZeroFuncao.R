@@ -175,7 +175,7 @@ print("Software que calcula o processamento de cada método numérico para zero 
 print("Autores:");
 print("João Gabriel Barbirato");
 print("Leonardo de Oliveira Peralta");
-print("Renata Sarmet Mendes");
+print("Renata Sarmet Smiderle Mendes");
 print("");
 print("Metodo de automatização:");
 print("automatiza(funcao, primeira derivada,segunda derivada, valor de a, valor de b, primeiro chute, segundo chute, 1 tolerancia bissecao, 2 tolerancia bissecao, 3 tolerancia bissecao, 1 tolerancia Newton, 2 tolerancia Newton, 3 tolerancia Newton,1 tolerancia Secante, 2 tolerancia Secante, 3 tolerancia Secante)");
