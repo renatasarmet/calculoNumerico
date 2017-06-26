@@ -358,18 +358,4 @@ automatizaInterpola<-function(p1,p2){
     planilha<-cbind(planilha,data2);
     caminho<-paste(getwd(),"/planilha.csv",sep="")
     write.table(planilha,file =caminho  , sep=",", row.names=FALSE, na="",col.names=FALSE);
-    
-    
-    
-    
-
 }
-
-
-
-
-
-
-
-
-
