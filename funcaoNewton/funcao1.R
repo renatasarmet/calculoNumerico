@@ -1,16 +1,16 @@
 source("automatizacaoZeroFuncao.R");
 
-f  <-function (x) { exp(x)/2 - 2*cos(x) };
-df <-function (x) { exp(x)/2 + 2*sin(x) };
-ddf<-function (x) { exp(x)/2 + 2*cos(x) };
+f <- function(x) { x^5 - (10*x^3)/9 + 5/21 };
+df <- function(x) { 5*x^4 - (10*x^2)/3};
+ddf <- function(x) { 20*x - 20*x/3 };
 
-# Teste ruim, provavelmente por causa do método
-a <- 0.904;
-b <- 0.9048;
+#Teste ruim de intervalo, pois ele chega quase no resultado, entao fica muito tempo por ir sempre na metade
+a <- 0.8;
+b <- 0.9;
 
-# Teste ruim de chute pois é bem longe do resultado
-x0 <- 0;
-x1 <- -1;
+# Teste bom de chute pois é perto do resultado
+x0 <- 0.83;
+x1 <- 1;
 
 # Tolerancia proxima ao zero de maquina
 tol <- 10^-16;
