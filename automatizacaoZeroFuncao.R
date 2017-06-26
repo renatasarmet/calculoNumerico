@@ -29,7 +29,7 @@ bissecao <- function(f,a,b,tol1,tol2,tol3,data){
       data<-rbind(data,c(x,rtol1,rtol2,rtol3));
       old_x <- x;
       k <- k + 1;
-      if((rtol1<tol1)||(rtol2<tol2)||(rtol3<tol3))  break; #decidir se quer quais tipos
+      if(rtol2<tol2)  break; #decidir se quer quais tipos
     }
     return (data);
   }
@@ -54,7 +54,7 @@ newton <- function(f, df, ddf, x, tol1, tol2, tol3,data){
     a <- ddf(x);
     k <- 0;
     #No while alterar entre 'e' e 'ou' dependendo do problema
-    while((rtol1>tol1)&&(rtol2>tol2)&&(rtol3>tol3)){ 
+    while(rtol2>tol2){ 
       #cat("K = ", k , "\n");
       #cat("x = ", x, "\n");
       old_x <- x;
@@ -89,7 +89,7 @@ secante<-function(f,x0,x1,tol1,tol2,tol3,data){
         rtol2<-abs(f(x1));
         rtol3<-abs((x2 - x1)/x2);
         data<-rbind(data,c(x2,rtol1,rtol2,rtol3));
-        if((rtol1<tol1)&&(rtol2<tol2)&&(rtol3<tol3)){
+        if(rtol2<tol2){
             #cat(x2)
             break
         }else{
