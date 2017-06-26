@@ -115,7 +115,7 @@ automatiza<-function(f,df,ddf,a,b,x0,x1,tol1B,tol2B,tol3B,tol1N,tol2N,tol3N,tol1
         data<-cbind(data,matrix("",n,1));
         data<-cbind(data,matrix("",n,1));
         tempos<-matrix(timeBissecao,5,1);
-        data<-rbind(data,matrix(c("","User","System","Elapsed","Comulative","Spawned"),1,6));
+        data<-rbind(data,matrix(c("","User","System","Elapsed","Cumulative","Spawned"),1,6));
         data<-rbind(data,matrix(c("Time:",tempos[1],tempos[2],tempos[3],tempos[4],tempos[5]),1,6));
 
         
@@ -129,7 +129,7 @@ automatiza<-function(f,df,ddf,a,b,x0,x1,tol1B,tol2B,tol3B,tol1N,tol2N,tol3N,tol1
         data1<-cbind(data1,matrix("",n,1));
         data1<-cbind(data1,matrix("",n,1));
         tempos<-matrix(timeNewton,5,1);
-        data1<-rbind(data1,matrix(c("","User","System","Elapsed","Comulative","Spawned"),1,6));
+        data1<-rbind(data1,matrix(c("","User","System","Elapsed","Cumulative","Spawned"),1,6));
         data1<-rbind(data1,matrix(c("Time:",tempos[1],tempos[2],tempos[3],tempos[4],tempos[5]),1,6));
 
         
@@ -144,7 +144,7 @@ automatiza<-function(f,df,ddf,a,b,x0,x1,tol1B,tol2B,tol3B,tol1N,tol2N,tol3N,tol1
         data2<-cbind(data2,matrix("",n,1));
         data2<-cbind(data2,matrix("",n,1));
         tempos<-matrix(timeSecante,5,1);
-        data2<-rbind(data2,matrix(c("","User","System","Elapsed","Comulative","Spawned"),1,6));
+        data2<-rbind(data2,matrix(c("","User","System","Elapsed","Cumulative","Spawned"),1,6));
         data2<-rbind(data2,matrix(c("Time:",tempos[1],tempos[2],tempos[3],tempos[4],tempos[5]),1,6));
 
         

@@ -182,7 +182,7 @@ automatizaInterpola<-function(p1,p2){
         titulo<-NULL
         titulo<-cbind(titulo,paste("Processamento da função de grau ",i,sep=""))
         dataProc<-rbind(dataProc,matrix(c(titulo1,titulo,"","","",""),1,6))
-        dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Comulative","Spawned"),1,6));
+        dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Cumulative","Spawned"),1,6));
         dataProc<-rbind(dataProc,matrix(c("Time:",dadoTempoP1[i - 1,1],dadoTempoP1[i - 1,2],dadoTempoP1[i - 1,3],dadoTempoP1[i - 1,4],dadoTempoP1[i - 1,5]),1,6));
         dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     }
@@ -194,7 +194,7 @@ automatizaInterpola<-function(p1,p2){
         titulo<-NULL
         titulo<-cbind(titulo,paste("Processamento da função de grau ",i,sep=""))
         dataProc<-rbind(dataProc,matrix(c(titulo1,titulo,"","","",""),1,6))
-        dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Comulative","Spawned"),1,6));
+        dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Cumulative","Spawned"),1,6));
         dataProc<-rbind(dataProc,matrix(c("Time:",dadoTempoP2[i - 1,1],dadoTempoP2[i - 1,2],dadoTempoP2[i - 1,3],dadoTempoP2[i - 1,4],dadoTempoP2[i - 1,5]),1,6));
         dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     }
@@ -250,7 +250,7 @@ automatizaInterpola<-function(p1,p2){
         titulo<-NULL
         titulo<-cbind(titulo,paste("Processamento da função de grau ",i,sep=""))
         dataProc<-rbind(dataProc,matrix(c(titulo1,titulo,"","","",""),1,6))
-        dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Comulative","Spawned"),1,6));
+        dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Cumulative","Spawned"),1,6));
         dataProc<-rbind(dataProc,matrix(c("Time:",dadoTempoP1[i - 1,1],dadoTempoP1[i - 1,2],dadoTempoP1[i - 1,3],dadoTempoP1[i - 1,4],dadoTempoP1[i - 1,5]),1,6));
         dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     }
@@ -262,7 +262,7 @@ automatizaInterpola<-function(p1,p2){
         titulo<-NULL
         titulo<-cbind(titulo,paste("Processamento da função de grau ",i,sep=""))
         dataProc<-rbind(dataProc,matrix(c(titulo1,titulo,"","","",""),1,6))
-        dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Comulative","Spawned"),1,6));
+        dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Cumulative","Spawned"),1,6));
         dataProc<-rbind(dataProc,matrix(c("Time:",dadoTempoP2[i - 1,1],dadoTempoP2[i - 1,2],dadoTempoP2[i - 1,3],dadoTempoP2[i - 1,4],dadoTempoP2[i - 1,5]),1,6));
         dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     }
@@ -317,7 +317,7 @@ automatizaInterpola<-function(p1,p2){
         titulo<-NULL
         titulo<-cbind(titulo,paste("Processamento da função de grau ",i,sep=""))
         dataProc<-rbind(dataProc,matrix(c(titulo1,titulo,"","","",""),1,6))
-        dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Comulative","Spawned"),1,6));
+        dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Cumulative","Spawned"),1,6));
         dataProc<-rbind(dataProc,matrix(c("Time:",dadoTempoP1[i - 1,1],dadoTempoP1[i - 1,2],dadoTempoP1[i - 1,3],dadoTempoP1[i - 1,4],dadoTempoP1[i - 1,5]),1,6));
         dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     }
@@ -329,7 +329,7 @@ automatizaInterpola<-function(p1,p2){
         titulo<-NULL
         titulo<-cbind(titulo,paste("Processamento da função de grau ",i,sep=""))
         dataProc<-rbind(dataProc,matrix(c(titulo1,titulo,"","","",""),1,6))
-        dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Comulative","Spawned"),1,6));
+        dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Cumulative","Spawned"),1,6));
         dataProc<-rbind(dataProc,matrix(c("Time:",dadoTempoP2[i - 1,1],dadoTempoP2[i - 1,2],dadoTempoP2[i - 1,3],dadoTempoP2[i - 1,4],dadoTempoP2[i - 1,5]),1,6));
         dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     }
