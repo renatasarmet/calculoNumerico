@@ -1,16 +1,16 @@
 source("automatizacaoZeroFuncao.R");
 
-f <- function(x) { e^sin(x) - 2 };
-df <- function(x) { e^sin(x) * cos(x)  };
-ddf <- function(x) { e^sin(x) * (cos(x)^2 - sin(x)) };
+f <- function(x) { exp(1)^sin(x) - 2 };
+df <- function(x) { exp(1)^sin(x) * cos(x)  };
+ddf <- function(x) { exp(1)^sin(x) * (cos(x)^2 - sin(x)) };
 
 #VER
-a <- 0;
-b <- 10;
+a <- 2;
+b <- 4;
 
 #VER
-x0 <- 8;
-x1 <- 10;
+x0 <- 5;
+x1 <- 5.2;
 
 # Tolerancia proxima ao zero de maquina
 tol <- 10^-16;
