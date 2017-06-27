@@ -1,8 +1,8 @@
 source("automatizacaoZeroFuncao.R");
 
-f <- function(x) { 1/tg(x) };
-df <- function(x) { -csc(x)^2  };
-ddf <- function(x) { 2*cot(x) * csc(x)^2 };
+f <- function(x) { 1/tan(x) };
+df <- function(x) { -(1/sin(x))^2  };
+ddf <- function(x) { 2*(1/tan(x))* (1/sin(x))^2 };
 
 #VER
 a <- 0;
