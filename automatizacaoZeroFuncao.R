@@ -1,3 +1,4 @@
+#método que verifica a convergencia da bissecao
 bissecao_convergencia <- function(f,a,b){
   if(f(a)*f(b)<0){
     cat("Converge \n");
@@ -8,7 +9,7 @@ bissecao_convergencia <- function(f,a,b){
   }
 }
 
-
+#método que acha o zero da função por bissecao
 bissecao <- function(f,a,b,tol1,tol2,tol3,data){
   if(bissecao_convergencia(f,a,b)==1){
     old_x <- a+b; 
@@ -36,7 +37,7 @@ bissecao <- function(f,a,b,tol1,tol2,tol3,data){
   return(NULL);
 }
 
-
+#realiza o teste da segunda derivada
 testeDDF <- function(ddf,x,a){
   b <- ddf(x);
   if(a*b < 0){
@@ -45,7 +46,7 @@ testeDDF <- function(ddf,x,a){
   return(1);
 }
 
-
+#calcula o zero da função pelo metodo de Newton
 newton <- function(f, df, ddf, x, tol1, tol2, tol3,data){
   if(!f(x)==0){
     rtol1 <- tol1 + 1;
@@ -86,11 +87,13 @@ secante<-function(f,x0,x1,tol1,tol2,tol3,data){
     repeat{
         x2<-( x0 * f(x1) - x1 * f(x0) ) / ( f(x1) - f(x0) );
         rtol1<-abs(x2 - x1);
-        rtol2<-abs(f(x1));
+        rtol2<-abs(f(x2));
         rtol3<-abs((x2 - x1)/x2);
         data<-rbind(data,c(x2,rtol1,rtol2,rtol3));
-        if(rtol2<tol2){
-            #cat(x2)
+        if(rtol2 == "NaN")
+            break;
+        if(rtol2<tol2 ){
+            
             break
         }else{
             x0<-x1;
@@ -101,10 +104,9 @@ secante<-function(f,x0,x1,tol1,tol2,tol3,data){
     return(data)
 }
 
-
-#MyData <- read.csv(file="c:/TheDataIWantToReadIn.csv", header=TRUE, sep=",")
-#
 automatiza<-function(f,df,ddf,a,b,x0,x1,tol1B,tol2B,tol3B,tol1N,tol2N,tol3N,tol1S,tol2S,tol3S){
+
+        #realiza o método da bisseção e o  tempo de processamento e coloca em uma matriz
         data<-matrix(c("","Metodo","bissecao",""),1,4)
         data<-rbind(data,matrix(c("X","Tolerancia 1","Tolerancia 2","Tolerancia 3"),1,4));
         timeBissecao<-proc.time();
@@ -118,7 +120,7 @@ automatiza<-function(f,df,ddf,a,b,x0,x1,tol1B,tol2B,tol3B,tol1N,tol2N,tol3N,tol1
         data<-rbind(data,matrix(c("","User","System","Elapsed","Cumulative","Spawned"),1,6));
         data<-rbind(data,matrix(c("Time:",tempos[1],tempos[2],tempos[3],tempos[4],tempos[5]),1,6));
 
-        
+        #realiza o método de Newton e o  tempo de processamento e coloca em uma matriz
         data1<-matrix(c("","Metodo","newton",""),1,4)
         data1<-rbind(data1,matrix(c("X","Tolerancia 1","Tolerancia 2","Tolerancia 3"),1,4));
         timeNewton<-proc.time();
@@ -133,7 +135,7 @@ automatiza<-function(f,df,ddf,a,b,x0,x1,tol1B,tol2B,tol3B,tol1N,tol2N,tol3N,tol1
         data1<-rbind(data1,matrix(c("Time:",tempos[1],tempos[2],tempos[3],tempos[4],tempos[5]),1,6));
 
         
-        
+        #realiza o método da secante e o  tempo de processamento e coloca em uma matriz
         data2<-matrix(c("","Metodo","secante",""),1,4)
         data2<-rbind(data2,matrix(c("X","Tolerancia 1","Tolerancia 2","Tolerancia 3"),1,4));
         timeSecante<-proc.time();
@@ -172,7 +174,7 @@ automatiza<-function(f,df,ddf,a,b,x0,x1,tol1B,tol2B,tol3B,tol1N,tol2N,tol3N,tol1
         
         
 }
-
+#Mostra quais os paramentros que devem ser passados para a função automatiza
 print("Software que calcula o processamento de cada método numérico para zero de função (Bissecao/Newton/Secante) e faz a tabulação.");
 print("Autores:");
 print("João Gabriel Barbirato");

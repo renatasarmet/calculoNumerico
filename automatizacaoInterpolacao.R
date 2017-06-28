@@ -1,3 +1,4 @@
+#funcao que realiza o tcl
 tcl <- function(A){
   n <- ncol(A);
   maior = 0;
@@ -24,7 +25,7 @@ tcl <- function(A){
 }
 
 
-
+#função para realizar a eliminação
 eliminacao <- function(A,B){
   n <- nrow(A);
   for(k in 1:(n-1)){
@@ -51,7 +52,7 @@ eliminacao <- function(A,B){
   }
   return (X);
 }
-
+#função que calcula a interpolação em um ponto por sistemas lineares
 interpolacaoPolinomial <- function(X,B,chute){
   n <- nrow(X);
   A <- matrix(1,n,n)
@@ -68,7 +69,7 @@ interpolacaoPolinomial <- function(X,B,chute){
     }
   return(sum);
 }
-
+#função que calcula a interpolação em um ponto por lagrange
 lagrange <- function(X,Y,p){
   n <- length(X);
   
@@ -98,6 +99,7 @@ lagrange <- function(X,Y,p){
   return (A);
  
 }
+#função que calcula a interpolação em um ponto por Newton
 interpolacaoNewton <- function(X,Y,p){
     n <- length(X);
     
@@ -120,9 +122,6 @@ interpolacaoNewton <- function(X,Y,p){
         #cat("(f[", i+1,"] - f[", i, "])/(X[",i+j-1,"] - X[",i,"])\n");
         }
     }
-    #print(D);
-    
-    
     #Calculando o vetor A com (x-xk)
     A[i] <- 1;
     for(i in 2:n){
@@ -140,6 +139,8 @@ interpolacaoNewton <- function(X,Y,p){
 
 automatizaInterpola<-function(p1,p2){
     MyData <- read.csv(file="dados.csv", header=FALSE , sep=",")
+    MyData<-MyData[order(MyData$V1,decreasing=FALSE),]
+
     x<-data.matrix(MyData[["V1"]], rownames.force = NA)
     y<-data.matrix(MyData[["V2"]], rownames.force = NA)
     n<-nrow(x)
@@ -170,10 +171,10 @@ automatizaInterpola<-function(p1,p2){
 
     interpolacao<-rbind(titulo,resultados)
     dadoTempoP1<-matrix(tempoP1,n-1,5)
-    
     titulo<-NULL
     dataProc<-NULL
     
+    #arruma as tabelas que contem o tempo de Processamento
     dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     titulo1<-cbind(titulo,paste("Processamento de x = ",p1,sep=""))
@@ -183,7 +184,8 @@ automatizaInterpola<-function(p1,p2){
         titulo<-cbind(titulo,paste("Processamento da função de grau ",i,sep=""))
         dataProc<-rbind(dataProc,matrix(c(titulo1,titulo,"","","",""),1,6))
         dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Cumulative","Spawned"),1,6));
-        dataProc<-rbind(dataProc,matrix(c("Time:",dadoTempoP1[i - 1,1],dadoTempoP1[i - 1,2],dadoTempoP1[i - 1,3],dadoTempoP1[i - 1,4],dadoTempoP1[i - 1,5]),1,6));
+        dataProc<-rbind(dataProc,matrix(c("Time:",dadoTempoP1[i - 1,1],dadoTempoP1[i - 1,2],dadoTempoP1[i - 1,3],
+        dadoTempoP1[i - 1,4],dadoTempoP1[i - 1,5]),1,6));
         dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     }
     titulo<-NULL
@@ -195,13 +197,14 @@ automatizaInterpola<-function(p1,p2){
         titulo<-cbind(titulo,paste("Processamento da função de grau ",i,sep=""))
         dataProc<-rbind(dataProc,matrix(c(titulo1,titulo,"","","",""),1,6))
         dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Cumulative","Spawned"),1,6));
-        dataProc<-rbind(dataProc,matrix(c("Time:",dadoTempoP2[i - 1,1],dadoTempoP2[i - 1,2],dadoTempoP2[i - 1,3],dadoTempoP2[i - 1,4],dadoTempoP2[i - 1,5]),1,6));
+        dataProc<-rbind(dataProc,matrix(c("Time:",dadoTempoP2[i - 1,1],dadoTempoP2[i - 1,2],dadoTempoP2[i - 1,3],
+        dadoTempoP2[i - 1,4],dadoTempoP2[i - 1,5]),1,6));
         dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     }
     data<-cbind(metodo,interpolacao)
     m<-ncol(data)
     while(ncol(dataProc) != m)
-        dataProc<-cbind(dataProc,matrix(c(""),4,1))
+        dataProc<-cbind(dataProc,matrix(c(""),nrow(dataProc),1))
     data<-rbind(data,dataProc)
     
     
@@ -238,10 +241,9 @@ automatizaInterpola<-function(p1,p2){
 
     interpolacao<-rbind(titulo,resultados)
     dadoTempoP1<-matrix(tempoP1,n-1,5)
-    
     titulo<-NULL
     dataProc<-NULL
-    
+    #arruma as tabelas que contem o tempo de Processamento
     dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     titulo1<-cbind(titulo,paste("Processamento de x = ",p1,sep=""))
@@ -251,7 +253,8 @@ automatizaInterpola<-function(p1,p2){
         titulo<-cbind(titulo,paste("Processamento da função de grau ",i,sep=""))
         dataProc<-rbind(dataProc,matrix(c(titulo1,titulo,"","","",""),1,6))
         dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Cumulative","Spawned"),1,6));
-        dataProc<-rbind(dataProc,matrix(c("Time:",dadoTempoP1[i - 1,1],dadoTempoP1[i - 1,2],dadoTempoP1[i - 1,3],dadoTempoP1[i - 1,4],dadoTempoP1[i - 1,5]),1,6));
+        dataProc<-rbind(dataProc,matrix(c("Time:",dadoTempoP1[i - 1,1],dadoTempoP1[i - 1,2],dadoTempoP1[i - 1,3]
+        ,dadoTempoP1[i - 1,4],dadoTempoP1[i - 1,5]),1,6));
         dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     }
     titulo<-NULL
@@ -263,13 +266,14 @@ automatizaInterpola<-function(p1,p2){
         titulo<-cbind(titulo,paste("Processamento da função de grau ",i,sep=""))
         dataProc<-rbind(dataProc,matrix(c(titulo1,titulo,"","","",""),1,6))
         dataProc<-rbind(dataProc,matrix(c("","User","System","Elapsed","Cumulative","Spawned"),1,6));
-        dataProc<-rbind(dataProc,matrix(c("Time:",dadoTempoP2[i - 1,1],dadoTempoP2[i - 1,2],dadoTempoP2[i - 1,3],dadoTempoP2[i - 1,4],dadoTempoP2[i - 1,5]),1,6));
+        dataProc<-rbind(dataProc,matrix(c("Time:",dadoTempoP2[i - 1,1],dadoTempoP2[i - 1,2],dadoTempoP2[i - 1,3]
+        ,dadoTempoP2[i - 1,4],dadoTempoP2[i - 1,5]),1,6));
         dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     }
     data1<-cbind(metodo,interpolacao)
     m<-ncol(data1)
     while(ncol(dataProc) != m)
-        dataProc<-cbind(dataProc,matrix(c(""),4,1))
+        dataProc<-cbind(dataProc,matrix(c(""),nrow(dataProc),1))
     data1<-rbind(data1,dataProc)
     
     #reset nas variaveis utilizadas para montar a tabela de um metodo
@@ -305,10 +309,10 @@ automatizaInterpola<-function(p1,p2){
 
     interpolacao<-rbind(titulo,resultados)
     dadoTempoP1<-matrix(tempoP1,n-1,5)
-    
+   
     titulo<-NULL
     dataProc<-NULL
-    
+    #arruma as tabelas que contem o tempo de Processamento
     dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     dataProc<-rbind(dataProc,matrix(c("","","","","",""),1,6));
     titulo1<-cbind(titulo,paste("Processamento de x = ",p1,sep=""))
@@ -336,9 +340,10 @@ automatizaInterpola<-function(p1,p2){
     data2<-cbind(metodo,interpolacao)
     m<-ncol(data2)
     while(ncol(dataProc) != m)
-        dataProc<-cbind(dataProc,matrix(c(""),4,1))
+        dataProc<-cbind(dataProc,matrix(c(""),nrow(dataProc),1))
     data2<-rbind(data2,dataProc)
     
+    #arruma as tabelas para serem juntadas
     n<-max(nrow(data),nrow(data1),nrow(data2));
         
     while(nrow(data) != n)
@@ -356,6 +361,20 @@ automatizaInterpola<-function(p1,p2){
     planilha<-cbind(planilha,matrix("",n,1));
     planilha<-cbind(planilha,matrix("",n,1));
     planilha<-cbind(planilha,data2);
+    
+    #pega o caminho atual e gera a planilha
     caminho<-paste(getwd(),"/planilha.csv",sep="")
     write.table(planilha,file =caminho  , sep=",", row.names=FALSE, na="",col.names=FALSE);
 }
+
+#Mostra quais os paramentros que devem ser passados para a função automatizaInterpola
+print("Software que calcula o processamento de cada método numérico para interpolação (Sistemas lineares/Lagrange/Newton) e faz a tabulação.");
+print("Autores:");
+print("João Gabriel Barbirato");
+print("Leonardo de Oliveira Peralta");
+print("Renata Sarmet Smiderle Mendes");
+print("");
+print("Metodo de automatização:");
+print("automatiza(ponto 1 para ser verificado,ponto 2 para ser verificado)");
+print("");
+print("A planilha que contém os dados deve ser denominada dados, no qual deve possuir apenas os dados, em que a primeira coluna irá ser os valores de x e a segunda coluna os de y");
